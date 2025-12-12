@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Project Name</title>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#191919">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/critical.css">
+<!--  Critical css needs to be connected this way:-->
+<!--  <style>-->
+<!--    <?php echo str_replace('url(..', parse_url(get_template_directory_uri(), PHP_URL_PATH), file_get_contents(TEMPLATE_PATH."/css/critical.css")); ?>-->
+<!--  </style>-->
+
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/sections/header.css" />
+  <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="css/sections/footer.css" />
+</head>
+<body class="page__body" >
+  <div class="site-container">
+    <header class="header">
+    <div class="container">
+      <div class="header__container">
+
+      </div>
+    </div>
+</header>
+
+<div class="menu mobile-show">
+  <div class="menu__inner">
+
+  </div>
+</div>
+
+    <main class="main">
+    </main>
+    <footer class="footer">
+  <div class="container">
+    <div class="footer__container">
+
+    </div>
+  </div>
+</footer>
+
+<div style="display: none;">
+
+</div>
+
+<script>
+  const TEMPLATE_PATH = ''
+  let validationErrors = {
+      "required": "This field is required",
+      "invalid": "This field is invalid",
+      "allowed_ext": "Allowed extensions: &1",
+      "max_size": "Maximum file size is &1",
+      "max_files": "Maximum files you can upload is &1",
+      "minlength": "Minimum number of characters is &1",
+
+      "firstname": {
+          "required": "First Name is required."
+      },
+      "lastname": {
+          "required": "Last Name is required."
+      },
+      "name": {
+          "regex": "Only letters and white space allowed"
+      },
+      "email": {
+          "regex": "The E-mail must be a valid email address.",
+          "required": "E-mail is required."
+      },
+      "zipcode": {
+          "required": "Postcode is required."
+      },
+      "language": {
+          "required": "Language is required."
+      },
+      "city": {
+          "required": "City is required."
+      },
+      "phone": {
+          "required": "Phone is required."
+      },
+      "password": {
+          "minlength": "Minimum number of characters is &1",
+          "regex": "The password must contain numbers and Latin letters",
+      },
+      "password_repeat": {
+          "password_repeat": "Passwords don't match"
+      },
+  }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<script src="https://blackbook.dev/plugin/?dropdown=1&accordion=1&validate=1" type="text/javascript"></script>
+<script src="js/main.js"></script>
+
+  </div>
+</body>
+
+</html>
