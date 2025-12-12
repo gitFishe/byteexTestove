@@ -62,6 +62,14 @@ body {
   }
 }
 
+@media (max-width: 758px) {
+  .title {
+    &-1 {
+      font-size: remF(26);
+      line-height: remF(34);
+    }
+  }
+}
 
 .btn {
   display: flex;
