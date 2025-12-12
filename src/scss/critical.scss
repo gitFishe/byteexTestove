@@ -7,14 +7,15 @@
 .container {
   margin: 0 auto;
   width: 100%;
-  max-width: rem(1230);
-  padding: 0 rem(20);
+  max-width: rem(1464);
+  padding: 0 rem(62);
   @media(max-width: 768px){
     padding: 0 15px;
   }
 }
 
 body {
+  font-family: "Sofia Pro", Arial, sans-serif;
   margin: 0;
   font-size: remF(16);
   line-height: remF(24);
@@ -33,6 +34,7 @@ body {
     line-height: remF(35);
     letter-spacing: 0.08em;
     color: var(--text);
+    font-family: 'SuisseIntl', Arial, sans-serif;
   }
 }
 
@@ -41,15 +43,15 @@ body {
 
 .title{
   &-1{
-    font-size: remF(16);
-    line-height: remF(24);
-    letter-spacing: rem(0.05);
+    font-size: remF(38);
+    line-height: remF(45);
+    letter-spacing: 0.04em;
   }
   &-2{
 
   }
   &-1, &-2, &-3, &-4, &-5, &-6{
-    font-family: var(--font-family-space);
+    color: var(--blue);
     *{
       font-family: inherit;
       line-height: inherit;
@@ -62,14 +64,30 @@ body {
 
 
 .btn {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   outline: none;
   text-align: center;
-  background-color: var(--primary);
-  color: #000;
+  background-color: var(--blue);
   transition: color var(--hover-transition), background-color var(--hover-transition), border-color var(--hover-transition);
+  min-width: rem(356);
+  height: rem(56);
+  border-radius: 5px;
+  >:not(:last-child) {
+    margin-right: rem(20);
+  }
+  span {
+    font-size: remF(18);
+    line-height: 100%;
+    letter-spacing: 0.03em;
+    color: var(--white);
+  }
+  &--strange {
+    img {
+      transform: translateY(12px);
+    }
+  }
   &:hover{
 
   }

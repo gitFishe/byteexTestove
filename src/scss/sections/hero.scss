@@ -1,0 +1,105 @@
+@import "../mixins";
+
+.hero {
+  padding-top: rem(33);
+  padding-bottom: rem(62);
+  &-container {
+    padding-left: rem(40);
+    display: flex;
+    justify-content: space-between;
+  }
+  &-logo {
+    width: rem(200);
+    height: rem(35);
+    transform: translateX(-6px);
+    margin-bottom: rem(60);
+  }
+  &-text {
+    max-width: 500px;
+    button {
+      margin-left: rem(4);
+      margin-top: rem(30);
+    }
+  }
+  &-list {
+    margin-left: rem(4);
+    margin-top: rem(25);
+    >:not(:last-child) {
+      margin-bottom: rem(23);
+    }
+    &__elem {
+      display: flex;
+      align-items: center;
+      img {
+        width: rem(31);
+        height: rem(31);
+        margin-bottom: auto;
+      }
+      span {
+        font-size: remF(15);
+        line-height: remF(23);
+        letter-spacing: 0.03em;
+        color: var(--gray-light);
+      }
+      >:not(:last-child) {
+        margin-right: rem(13);
+      }
+    }
+  }
+  &-gallery {
+    width: rem(725);
+    height: rem(422);
+    position: relative;
+    margin-top: rem(106);
+    &::before,&::after {
+      content: '';
+      position: absolute;
+      background: linear-gradient(0deg, rgba(249, 240, 229, 0.7) 0%, rgba(249, 240, 229, 0.217) 100%);
+      z-index: -2;
+      top: 50%;
+      width: rem(134);
+      height: rem(189);
+      transform: translate(0%,-50%);
+    }
+    &::before {
+      left: 0;
+    }
+    &::after {
+      right: 0;
+    }
+    &__img {
+      position: absolute;
+      top: 50%;
+      &--left {
+        width: rem(210);
+        height: rem(316);
+        left: 23.5%;
+        z-index: -1;
+        transform: translate(-50%,-50%);
+        img {
+          height: 100%;
+        }
+      }
+      &--mid {
+        width: rem(259);
+        height: rem(422);
+        left: 50%;
+        transform: translate(-50%,-50%);
+        outline: 3px solid var(--white);
+        img {
+          height: 100%;
+        }
+      }
+      &--right {
+        width: rem(210);
+        height: rem(316);
+        right: 7.5%;
+        z-index: -1;
+        transform: translate(0%,-50%);
+        img {
+          height: 100%;
+        }
+      }
+    }
+  }
+}

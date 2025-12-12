@@ -75,34 +75,34 @@ const clean = () => {
 //svg sprite
 const svgSprites = () => {
   let thisPipe = src(paths.srcSvg)
-    .pipe(
-      svgmin({
-        js2svg: {
-          pretty: true,
+      .pipe(
+          svgmin({
+            js2svg: {
+              pretty: true,
+            },
+          })
+      )
+      .pipe(
+          cheerio({
+            run: function ($) {
+              $('[fill]').removeAttr('fill');
+              $('[stroke]').removeAttr('stroke');
+              $('[style]').removeAttr('style');
+            },
+            parserOptions: {
+              xmlMode: true
+            },
+          })
+      )
+      .pipe(replace('&gt;', '>'))
+      .pipe(svgSprite({
+        mode: {
+          stack: {
+            sprite: "../sprite.svg"
+          }
         },
-      })
-    )
-    .pipe(
-      cheerio({
-        run: function ($) {
-          $('[fill]').removeAttr('fill');
-          $('[stroke]').removeAttr('stroke');
-          $('[style]').removeAttr('style');
-        },
-        parserOptions: {
-          xmlMode: true
-        },
-      })
-    )
-    .pipe(replace('&gt;', '>'))
-    .pipe(svgSprite({
-      mode: {
-        stack: {
-          sprite: "../sprite.svg"
-        }
-      },
-    }))
-    .pipe(dest(paths.buildImgFolder))
+      }))
+      .pipe(dest(paths.buildImgFolder))
 
   if(wpFolder)
     thisPipe.pipe(dest(paths.wpImgFolder));
@@ -113,22 +113,22 @@ const svgSprites = () => {
 // scss styles
 const styles = () => {
   let thisPipe = src(paths.srcScss, { sourcemaps: !isProd })
-    .pipe(plumber(
-      notify.onError({
-        title: "SCSS",
-        message: "Error: <%= error.message %>"
-      })
-    ))
-    .pipe(mainSass())
-    .pipe(autoprefixer({
-      cascade: false,
-      grid: true,
-      overrideBrowserslist: ["last 5 versions"]
-    }))
-    .pipe(gulpif(isProd, cleanCSS({
-      level: 2
-    })))
-    .pipe(dest(paths.buildCssFolder, { sourcemaps: '.' }))
+      .pipe(plumber(
+          notify.onError({
+            title: "SCSS",
+            message: "Error: <%= error.message %>"
+          })
+      ))
+      .pipe(mainSass())
+      .pipe(autoprefixer({
+        cascade: false,
+        grid: true,
+        overrideBrowserslist: ["last 5 versions"]
+      }))
+      .pipe(gulpif(isProd, cleanCSS({
+        level: 2
+      })))
+      .pipe(dest(paths.buildCssFolder, { sourcemaps: '.' }))
 
   if(wpFolder)
     thisPipe.pipe(dest(paths.wpCssFolder, { sourcemaps: '.' }))
@@ -139,19 +139,19 @@ const styles = () => {
 // styles backend
 const stylesBackend = () => {
   let thisPipe = src(paths.srcScss)
-    .pipe(plumber(
-      notify.onError({
-        title: "SCSS",
-        message: "Error: <%= error.message %>"
-      })
-    ))
-    .pipe(mainSass())
-    .pipe(autoprefixer({
-      cascade: false,
-      grid: true,
-      overrideBrowserslist: ["last 5 versions"]
-    }))
-    .pipe(dest(paths.buildCssFolder))
+      .pipe(plumber(
+          notify.onError({
+            title: "SCSS",
+            message: "Error: <%= error.message %>"
+          })
+      ))
+      .pipe(mainSass())
+      .pipe(autoprefixer({
+        cascade: false,
+        grid: true,
+        overrideBrowserslist: ["last 5 versions"]
+      }))
+      .pipe(dest(paths.buildCssFolder))
 
 
   if(wpFolder)
@@ -163,13 +163,13 @@ const stylesBackend = () => {
 // scripts
 const scripts = () => {
   let thisPipe = src(paths.srcMainJs)
-    .pipe(gulpif(isProd, minify({
-      noSource: true,
-      ext:{
-        min:'.js'
-      },
-    })))
-    .pipe(dest(paths.buildJsFolder))
+      .pipe(gulpif(isProd, minify({
+        noSource: true,
+        ext:{
+          min:'.js'
+        },
+      })))
+      .pipe(dest(paths.buildJsFolder))
 
   if(wpFolder)
     thisPipe.pipe(dest(paths.wpJsFolder))
@@ -178,13 +178,13 @@ const scripts = () => {
 }
 const scriptsSections = () => {
   let sectionsPipe = src(paths.srcSectionsJs)
-    .pipe(gulpif(isProd, minify({
-      noSource: true,
-      ext:{
-        min:'.js'
-      },
-    })))
-    .pipe(dest(paths.buildJsSectionsFolder))
+      .pipe(gulpif(isProd, minify({
+        noSource: true,
+        ext:{
+          min:'.js'
+        },
+      })))
+      .pipe(dest(paths.buildJsSectionsFolder))
 
   if(wpFolder)
     sectionsPipe.pipe(dest(paths.wpJsSectionsFolder))
@@ -194,16 +194,16 @@ const scriptsSections = () => {
 }
 const stylesSections = () => {
   let sectionsPipe = src(paths.srcScssSections, { sourcemaps: !isProd })
-    .pipe(mainSass())
-    .pipe(autoprefixer({
-      cascade: false,
-      grid: true,
-      overrideBrowserslist: ["last 5 versions"]
-    }))
-    .pipe(gulpif(isProd, cleanCSS({
-      level: 2
-    })))
-    .pipe(dest(paths.buildCssSectionsFolder, { sourcemaps: '.' }))
+      .pipe(mainSass())
+      .pipe(autoprefixer({
+        cascade: false,
+        grid: true,
+        overrideBrowserslist: ["last 5 versions"]
+      }))
+      .pipe(gulpif(isProd, cleanCSS({
+        level: 2
+      })))
+      .pipe(dest(paths.buildCssSectionsFolder, { sourcemaps: '.' }))
 
   if(wpFolder)
     sectionsPipe.pipe(dest(paths.wpCssSectionsFolder, { sourcemaps: '.' }))
@@ -213,7 +213,7 @@ const stylesSections = () => {
 
 const scriptsJson = () => {
   let thisPipe = src(paths.srcJson)
-    .pipe(dest(paths.buildJsFolder))
+      .pipe(dest(paths.buildJsFolder))
 
   if(wpFolder)
     thisPipe.pipe(dest(paths.wpJsFolder))
@@ -222,13 +222,13 @@ const scriptsJson = () => {
 }
 const scriptsPlugins = () => {
   let thisPipe = src(paths.srcPluginsJs)
-    .pipe(minify({
-      noSource: true,
-      ext:{
-        min:'.js'
-      },
-    }))
-    .pipe(dest(paths.buildJsFolder))
+      .pipe(minify({
+        noSource: true,
+        ext:{
+          min:'.js'
+        },
+      }))
+      .pipe(dest(paths.buildJsFolder))
 
   if(wpFolder)
     thisPipe.pipe(dest(paths.wpJsFolder))
@@ -237,10 +237,10 @@ const scriptsPlugins = () => {
 }
 const stylesPlugins = () => {
   let thisPipe = src(paths.srcPluginsCss)
-    .pipe(gulpif(isProd, cleanCSS({
-      level: 2
-    })))
-    .pipe(dest(paths.buildCssFolder))
+      .pipe(gulpif(isProd, cleanCSS({
+        level: 2
+      })))
+      .pipe(dest(paths.buildCssFolder))
 
   if(wpFolder)
     thisPipe.pipe(dest(paths.wpCssFolder))
@@ -251,40 +251,40 @@ const stylesPlugins = () => {
 // scripts backend
 const scriptsBackend = () => {
   let thisPipe = src(paths.srcMainJs)
-    .pipe(plumber(
-      notify.onError({
-        title: "JS",
-        message: "Error: <%= error.message %>"
-      })
-    ))
-    .pipe(webpackStream({
-      mode: 'development',
-      output: {
-        filename: 'main.js',
-      },
-      module: {
-        rules: [{
-          test: /\.m?js$/,
-          exclude: /node_modules/,
-          use: {
-            loader: 'babel-loader',
-            options: {
-              presets: [
-                ['@babel/preset-env', {
-                  targets: "defaults"
-                }]
-              ]
+      .pipe(plumber(
+          notify.onError({
+            title: "JS",
+            message: "Error: <%= error.message %>"
+          })
+      ))
+      .pipe(webpackStream({
+        mode: 'development',
+        output: {
+          filename: 'main.js',
+        },
+        module: {
+          rules: [{
+            test: /\.m?js$/,
+            exclude: /node_modules/,
+            use: {
+              loader: 'babel-loader',
+              options: {
+                presets: [
+                  ['@babel/preset-env', {
+                    targets: "defaults"
+                  }]
+                ]
+              }
             }
-          }
-        }]
-      },
-      devtool: false
-    }))
-    .on('error', function (err) {
-      console.error('WEBPACK ERROR', err);
-      this.emit('end');
-    })
-    .pipe(dest(paths.buildJsFolder))
+          }]
+        },
+        devtool: false
+      }))
+      .on('error', function (err) {
+        console.error('WEBPACK ERROR', err);
+        this.emit('end');
+      })
+      .pipe(dest(paths.buildJsFolder))
 
   if(wpFolder)
     thisPipe.pipe(dest(paths.wpJsFolder))
@@ -294,21 +294,21 @@ const scriptsBackend = () => {
 
 const fonts = () => {
   return src(`${paths.fontsFolder}/**`)
-    .pipe(dest(paths.fontsBuildFolder))
+      .pipe(dest(paths.fontsBuildFolder))
 }
 
 const images = () => {
   let thisPipe = src([`${paths.srcImgFolder}/**/**.{jpg,jpeg,png,svg}`])
-    .pipe(gulpif(isProd, image([
-      image.mozjpeg({
-        quality: 80,
-        progressive: true
-      }),
-      image.optipng({
-        optimizationLevel: 2
-      }),
-    ])))
-    .pipe(dest(paths.buildImgFolder))
+      .pipe(gulpif(isProd, image([
+        image.mozjpeg({
+          quality: 80,
+          progressive: true
+        }),
+        image.optipng({
+          optimizationLevel: 2
+        }),
+      ])))
+      .pipe(dest(paths.buildImgFolder))
 
   if(wpFolder)
     thisPipe.pipe(dest(paths.wpImgFolder));
@@ -318,8 +318,8 @@ const images = () => {
 
 const webpImages = () => {
   let thisPipe = src([`${paths.srcImgFolder}/**/**.{jpg,jpeg,png}`])
-    .pipe(webp())
-    .pipe(dest(paths.buildImgFolder))
+      .pipe(webp())
+      .pipe(dest(paths.buildImgFolder))
 
 
   if(wpFolder)
@@ -330,15 +330,15 @@ const webpImages = () => {
 
 const htmlInclude = () => {
   return src([`${srcFolder}/*.html`])
-    .pipe(fileInclude({
-      prefix: '@',
-      basepath: '@file'
-    }))
-    .pipe(typograf({
-      locale: ['ru', 'en-US']
-    }))
-    .pipe(dest(buildFolder))
-    .pipe(browserSync.stream());
+      .pipe(fileInclude({
+        prefix: '@',
+        basepath: '@file'
+      }))
+      .pipe(typograf({
+        locale: ['ru', 'en-US']
+      }))
+      .pipe(dest(buildFolder))
+      .pipe(browserSync.stream());
 }
 
 const watchFiles = () => {
@@ -374,54 +374,54 @@ const cache = () => {
   return src(`${buildFolder}/**/*.{css,js,svg,png,jpg,jpeg,webp,woff2}`, {
     base: buildFolder
   })
-    .pipe(rev())
-    .pipe(revDel())
-    .pipe(dest(buildFolder))
-    .pipe(rev.manifest('rev.json'))
-    .pipe(dest(buildFolder));
+      .pipe(rev())
+      .pipe(revDel())
+      .pipe(dest(buildFolder))
+      .pipe(rev.manifest('rev.json'))
+      .pipe(dest(buildFolder));
 };
 
 const rewrite = () => {
   const manifest = readFileSync('app/rev.json');
   src(`${paths.buildCssFolder}/*.css`)
-    .pipe(revRewrite({
-      manifest
-    }))
-    .pipe(dest(paths.buildCssFolder));
-
-  if(wpFolder) {
-    src(`${paths.wpCssFolder}/*.css`)
       .pipe(revRewrite({
         manifest
       }))
-      .pipe(dest(paths.wpCssFolder));
+      .pipe(dest(paths.buildCssFolder));
+
+  if(wpFolder) {
+    src(`${paths.wpCssFolder}/*.css`)
+        .pipe(revRewrite({
+          manifest
+        }))
+        .pipe(dest(paths.wpCssFolder));
   }
   return src(`${buildFolder}/**/*.html`)
-    .pipe(revRewrite({
-      manifest
-    }))
-    .pipe(dest(buildFolder));
+      .pipe(revRewrite({
+        manifest
+      }))
+      .pipe(dest(buildFolder));
 }
 
 const htmlMinify = () => {
   return src(`${buildFolder}/**/*.html`)
-    .pipe(htmlmin({
-      collapseWhitespace: true
-    }))
-    .pipe(dest(buildFolder));
+      .pipe(htmlmin({
+        collapseWhitespace: true
+      }))
+      .pipe(dest(buildFolder));
 }
 
 const zipFiles = (done) => {
   del.sync([`${buildFolder}/*.zip`]);
   return src(`${buildFolder}/**/*.*`, {})
-    .pipe(plumber(
-      notify.onError({
-        title: "ZIP",
-        message: "Error: <%= error.message %>"
-      })
-    ))
-    .pipe(zip(`${rootFolder}.zip`))
-    .pipe(dest(buildFolder));
+      .pipe(plumber(
+          notify.onError({
+            title: "ZIP",
+            message: "Error: <%= error.message %>"
+          })
+      ))
+      .pipe(zip(`${rootFolder}.zip`))
+      .pipe(dest(buildFolder));
 }
 
 const toProd = (done) => {
