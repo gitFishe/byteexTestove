@@ -3,6 +3,13 @@
   top: 0;
   left: 0;
   right: 0;
-  padding: 2.1875rem 0;
+  background-color: var(--beige);
+}
+.header__text {
+  text-align: center;
+  font-family: "SuisseIntl", Arial, sans-serif;
+}
+.header__text span {
+  color: #a8a39e;
 }
 /*# sourceMappingURL=header.css.map */

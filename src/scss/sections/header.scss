@@ -5,8 +5,16 @@
   top: 0;
   left: 0;
   right: 0;
-  padding: rem(35) 0;
+  background-color: var(--beige);
+  &__container {
 
+  }
+  &__text {
+    text-align: center;
+    font-family: 'SuisseIntl', Arial, sans-serif;
+    span {
+    color: #a8a39e;}
+  }
 }
 
   

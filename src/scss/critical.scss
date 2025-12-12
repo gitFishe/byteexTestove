@@ -16,7 +16,6 @@
 
 body {
   margin: 0;
-  font-family: var(--font-family-space);
   font-size: remF(16);
   line-height: remF(24);
   font-weight: 400;
@@ -26,6 +25,18 @@ body {
     overflow: hidden;
   }
 }
+
+.text {
+  &-title {
+    font-weight: 400;
+    font-size:11px;
+    line-height: remF(35);
+    letter-spacing: 0.08em;
+    color: var(--text);
+  }
+}
+
+
 
 
 .title{
