@@ -4,6 +4,7 @@
   --primary:#EEE;
   --beige: #f9f0e5;
   --text: #565656;
+  --gray:#676869;
   --gray-light:#a8a39e;
   --blue: #01005B;
   --hover-transition: 0.3s ease-in-out;
@@ -256,8 +257,8 @@ button, label {
 .container {
   margin: 0 auto;
   width: 100%;
-  max-width: 91.5rem;
-  padding: 0 3.875rem;
+  max-width: 82.0625rem;
+  padding: 0 1.875rem;
 }
 @media (max-width: 768px) {
   .container {
@@ -292,6 +293,16 @@ body.menu-open {
   line-height: max(2.8125rem, 12px);
   letter-spacing: 0.04em;
 }
+.title-2 {
+  font-size: max(2rem, 12px);
+  line-height: max(2.5rem, 12px);
+  letter-spacing: 0.04em;
+}
+.title-5 {
+  font-size: max(1.375rem, 12px);
+  line-height: max(1.5rem, 12px);
+  letter-spacing: 0.04em;
+}
 .title-1, .title-2, .title-3, .title-4, .title-5, .title-6 {
   color: var(--blue);
 }
@@ -305,6 +316,10 @@ body.menu-open {
 
 @media (max-width: 758px) {
   .title-1 {
+    font-size: max(1.625rem, 12px);
+    line-height: max(2.125rem, 12px);
+  }
+  .title-2 {
     font-size: max(1.625rem, 12px);
     line-height: max(2.125rem, 12px);
   }

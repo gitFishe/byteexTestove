@@ -3,7 +3,7 @@
   padding-bottom: 3.875rem;
 }
 .hero-container {
-  padding-left: 2.5rem;
+  margin-right: -2.5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -93,6 +93,7 @@
 @media (max-width: 768px) {
   .hero {
     padding-top: 0.875rem;
+    padding-bottom: 5.375rem;
   }
   .hero-container {
     -webkit-box-orient: vertical;
@@ -104,6 +105,7 @@
     align-items: center;
     padding-left: 0;
     padding-right: 0.375rem;
+    margin: 0;
   }
   .hero h1 {
     text-align: center;

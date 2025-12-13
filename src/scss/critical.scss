@@ -7,8 +7,8 @@
 .container {
   margin: 0 auto;
   width: 100%;
-  max-width: rem(1464);
-  padding: 0 rem(62);
+  max-width: rem(1313);
+  padding: 0 rem(30);
   @media(max-width: 768px){
     padding: 0 15px;
   }
@@ -48,7 +48,14 @@ body {
     letter-spacing: 0.04em;
   }
   &-2{
-
+    font-size: remF(32);
+    line-height: remF(40);
+    letter-spacing: 0.04em;
+  }
+  &-5 {
+    font-size: remF(22);
+    line-height: remF(24);
+    letter-spacing: 0.04em;
   }
   &-1, &-2, &-3, &-4, &-5, &-6{
     color: var(--blue);
@@ -65,6 +72,10 @@ body {
 @media (max-width: 758px) {
   .title {
     &-1 {
+      font-size: remF(26);
+      line-height: remF(34);
+    }
+    &-2 {
       font-size: remF(26);
       line-height: remF(34);
     }
