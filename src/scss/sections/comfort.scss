@@ -1,0 +1,91 @@
+@import "../mixins";
+
+.comfort {
+  padding: rem(75) rem(15);
+  &-container {
+    text-align: center;
+  }
+  &-group {
+    margin-top: rem(46);
+    display: flex;
+    &__block {
+      height: rem(321);
+      background-color: #EDEDED;
+      border-radius: 8px;
+      padding: rem(35);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      transition: background-color var(--hover-transition);
+      &:hover {
+        background-color: var(--beige);
+      }
+      &-img {
+        margin-bottom: rem(16);
+        width: rem(60);
+        height: rem(60);
+        img {
+          object-fit: contain;
+        }
+      }
+      p {
+        color: var(--gray);
+        margin-top: rem(20);
+      }
+    }
+  }
+  .swiper {
+    &-button-prev, &-button-next {
+      &::after {
+        display: none;
+      }
+    }
+  }
+  .customize {
+    margin-top: rem(56);
+    &-btn {
+      align-items: center;
+      width: fit-content;
+    }
+  }
+}
+@media (max-width:768px) {
+  .comfort {
+    padding: rem(57) rem(15) rem(59);
+    &-btn {
+      width: 100%;
+      margin-top: rem(41);
+    }
+    &-group {
+      padding: 0 rem(8);
+      margin-top: rem(23);
+      display: flex;
+      align-items: center;
+      >:not(:last-child) {
+        margin-right: rem(23);
+      }
+      &__block {
+        height: rem(288);
+      }
+    }
+    .customize {
+      margin-top: rem(56);
+    }
+    .swiper {
+      &-button-prev, &-button-next {
+        position: static;
+        height: rem(15);
+        width: rem(8);
+        flex-shrink: 0;
+        img {
+          object-fit: contain;
+        }
+      }
+      &-button-prev {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

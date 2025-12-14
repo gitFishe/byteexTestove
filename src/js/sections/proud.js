@@ -21,8 +21,8 @@ const swiper = new Swiper(galleryEl, {
 	},
 
 	navigation: {
-		nextEl: ".swiper-button-next",
-		prevEl: ".swiper-button-prev",
+		nextEl: ".proud-swiper-button-next",
+		prevEl: ".proud-swiper-button-prev",
 	},
 
 	on: {

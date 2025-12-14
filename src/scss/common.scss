@@ -25,6 +25,34 @@
   }
 }
 
+.customize {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &-btn {
+    img {
+      width: rem(23);
+      height: rem(10);
+    }
+  }
+  &-info {
+    font-size: remF(12);
+    line-height: remF(20);
+    color: var(--gray);
+    display: flex;
+    align-items: center;
+    margin-top: rem(13);
+    font-family: 'SuisseIntl', Arial, sans-serif;
+    >:not(:last-child) {
+      margin-right: rem(13);
+    }
+    img {
+      width: rem(81);
+      height: rem(13);
+    }
+  }
+}
+
 .input {
   position: relative;
   & input,
